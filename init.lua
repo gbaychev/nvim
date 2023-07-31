@@ -19,6 +19,7 @@ vim.opt.scrolloff = 8
 vim.opt.colorcolumn = "130"
 vim.opt.number = true
 vim.g.mapleader = " "
+vim.opt.guifont = "CaskaydiaCove NF:h11"
 
 vim.api.nvim_set_keymap('n', '<F5>', ':set list!<CR>', {expr = false, silent=true} )
 vim.api.nvim_set_keymap('n', '<C-L>', ':nohl<CR>', {expr = false, silent=true} )

@@ -32,6 +32,7 @@ Linux
  ```
  :PackerSync
  ```
+ If you get an error message, when you first run `:PackerSync`, this is normal.
 
  ## Some notes about Windows
 
@@ -44,4 +45,6 @@ Linux
 
  [Reference](https://stackoverflow.com/questions/20449316/how-add-context-menu-item-to-windows-explorer-for-folders)
 
+neovim.exe must be added to `PATH`
+CaskaydiaCove NF must be installed, so that the airline bar functions properly
 
