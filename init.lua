@@ -1,4 +1,4 @@
- require("plugins") --require <nvim_cfg_dir>/lua/plugins.lua
+require("plugins") --require <nvim_cfg_dir>/lua/plugins.lua
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -19,8 +19,6 @@ vim.opt.scrolloff = 8
 vim.opt.colorcolumn = "130"
 vim.opt.number = true
 vim.g.mapleader = " "
-vim.opt.guifont = "CaskaydiaCove NF:h11"
-vim.g.copilot_assume_mapped = true 
 
 vim.api.nvim_set_keymap('n', '<F5>', ':set list!<CR>', {expr = false, silent=true} )
 vim.api.nvim_set_keymap('n', '<C-L>', ':nohl<CR>', {expr = false, silent=true} )
@@ -30,16 +28,24 @@ vim.api.nvim_set_keymap('n', '<C-p>', ':bprevious<CR>', {expr = false} )
 vim.api.nvim_set_keymap('c', 'W', 'w', {expr = false, silent=true} )
 vim.api.nvim_set_keymap('c', 'Q', 'q', {expr = false, silent=true} )
 
-vim.g.clipboard = {
-                    name = 'WslClipboard',
-                    copy = {
-                      ['+'] = 'clip.exe',
-                      ['*'] = 'clip.exe'
-                    },
-                    paste = {
-                      ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-                      ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))'
-                    },
-                    cache_enabled = false,
-                 }
+os_name = vim.loop.os_uname().sysname
+
+if string.find(os_name, "Windows") then
+    vim.g.clipboard = {
+                        name = 'WslClipboard',
+                        copy = {
+                          ['+'] = 'clip.exe',
+                          ['*'] = 'clip.exe'
+                        },
+                        paste = {
+                          ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+                          ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))'
+                        },
+                        cache_enabled = false,
+                     }
+    vim.opt.guifont = "CaskaydiaCove NF:h11"
+    vim.g.copilot_assume_mapped = true 
+end
+    
+
 
