@@ -7,7 +7,7 @@ vim.opt.confirm = true
 vim.opt.visualbell = true
 vim.opt.ttimeout = true
 vim.opt.ttimeoutlen = 200
-vim.opt.pastetoggle = '<F11>'
+--vim.opt.pastetoggle = '<F11>'
 vim.opt.listchars = 'eol:¬,tab:>·,trail:·,extends:>,precedes:<,space:·'
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
@@ -20,6 +20,7 @@ vim.opt.colorcolumn = "130"
 vim.opt.number = true
 vim.g.mapleader = " "
 vim.opt.guifont = "CaskaydiaCove NF:h11"
+vim.g.copilot_assume_mapped = true 
 
 vim.api.nvim_set_keymap('n', '<F5>', ':set list!<CR>', {expr = false, silent=true} )
 vim.api.nvim_set_keymap('n', '<C-L>', ':nohl<CR>', {expr = false, silent=true} )
@@ -41,5 +42,4 @@ vim.g.clipboard = {
                     },
                     cache_enabled = false,
                  }
-
 
