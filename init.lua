@@ -40,6 +40,17 @@ vim.api.nvim_create_autocmd(
         end
     })
 
+vim.api.nvim_create_autocmd(
+    {'FileType'},
+    {
+        pattern = "cpp,c,cppm,h",
+        callback = function()
+            vim.schedule(function ()
+                vim.api.nvim_buf_set_keymap(0, 'n', '<F6>', ':! cmake --build ./build<CR>', {expr = false})
+            end)
+        end
+    })
+
 os_name = vim.loop.os_uname().sysname
 
 if string.find(os_name, "Windows") then

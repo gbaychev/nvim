@@ -33,10 +33,11 @@ return {
             --vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
             vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
             vim.keymap.set('n', '<leader>fs', builtin.grep_string, {})
+            vim.keymap.set('n', '<leader>fd', builtin.diagnostics, {})
 
             telescope.setup({
                 defaults = {
-                    file_ignore_patterns = { "target", "node_modules" },
+                    file_ignore_patterns = { "target", "node_modules", "build" },
                     layout_strategy = "horizontal",
                     layout_config = { prompt_position = "top" },
                     sorting_strategy = "ascending",
@@ -45,33 +46,6 @@ return {
             })
         end,
     },
-    {
-        "mfussenegger/nvim-dap",
-        config = function()
-            vim.keymap.set('n', '<leader>db','<cmd> DapToggleBreakpoint<CR>')
-            vim.keymap.set('n', '<leader>dui',function()
-                local widgets = require('dap.ui.widgets')
-                local sidebar = widgets.sidebar(widgets.scopes)
-                sidebar.open()
-            end)
-        end
-    },
-    {
-        "leoluz/nvim-dap-go",
-        ft = "go",
-        dependencies = "mfussenegger/nvim-dap",
-        config = function()
-            require("dap-go").setup()
-        end
-    },
-    --[[{
-        "zbirenbaum/copilot.lua",
-        cmd = "Copilot",
-        event = "InsertEnter",
-        config = function()
-            require("copilot").setup({})
-        end
-    },]]--
     {
         "nvim-neo-tree/neo-tree.nvim",
         version = "v3.x",
